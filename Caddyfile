@@ -1,0 +1,8 @@
+http://pgp.ustc.edu.cn:11371, http://pgp.ustc.edu.cn, https://pgp.ustc.edu.cn {
+  bind 
+  root /var/lib/sks/web/
+  proxy /pks/ http://127.0.0.1:11371/ {
+    header_downstream Via "{proto} {hostonly}:11371 (Caddy)"
+  }
+  tls zsj950618@gmail.com
+}
