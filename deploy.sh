@@ -30,13 +30,13 @@ if [[ ! -e /var/lib/sks ]]; then
 	rm -rf /var/lib/sks/dump
 	cur=$(dirname "$(readlink -f "$0")")
 	rm -f /var/lib/sks/membership
-	ln -s "$cur/membership" /var/lib/sks/membership
+	ln "$cur/membership" /var/lib/sks/membership
 	rm -f /var/lib/sks/sksconf
-	ln -s "$cur/sksconf" /var/lib/sks/sksconf
+	ln "$cur/sksconf" /var/lib/sks/sksconf
 	rm -f /var/lib/sks/caddy/Caddyfile
-	ln -s "$cur/Caddyfile" /var/lib/sks/caddy/Caddyfile
+	ln "$cur/Caddyfile" /var/lib/sks/caddy/Caddyfile
 	rm -rf /var/lib/sks/web
-	ln -s "$cur/web" /var/lib/sks/web
+	ln "$cur/web" /var/lib/sks/web
 fi
 
 docker rm -v -f sks-keyserver || true
