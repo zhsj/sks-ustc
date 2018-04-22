@@ -1,170 +1,287 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>SKS key server</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-    h1,
-    h2,
-    p {
-      margin: 0; /* Let's zero those margins */
-    }
+<html>
 
-    #container {
-      border: 1px solid #555; /* Nice transition from white background */
-      width: 600px; /* Should be narrow enough for small screens */
-      margin: 0 auto; /* Centering */
-      font-size: 1.1em; /* Font big enough not to need to squint */
-      line-height: 1.3em;
-    }
+<head>
+    <title>PGP Key Server</title>
+    <style>
+        .pc-tab>input,
+        .pc-tab section>div {
+            display: none;
+        }
 
-    #title {
-      background-color:#e2e5e2;
-      padding: 10px;
-    }
+        #tab1:checked~section .tab1,
+        #tab2:checked~section .tab2,
+        #tab3:checked~section .tab3 {
+            display: block;
+        }
 
-    #title h1, #title h2 {
-      margin-top: 0.3em;
-    }
+        #tab1:checked~nav .tab1,
+        #tab2:checked~nav .tab2,
+        #tab3:checked~nav .tab3 {
+            color: red;
+        }
 
-    #info {
-      background-color:#e2e5e2;
-      padding: 5px 10px;
-    }
+        /* Visual Styles */
 
-    #main {
-      background : #FAFBEA;
-      padding: 0 10px 10px 10px;
-    }
+        *,
+        *:after,
+        *:before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
 
-    #main header {
-      padding-top: 1em;
-    }
+        body {
+            -webkit-font-smoothing: antialiased;
+            background: #ecf0f1;
+        }
 
-    #main p {
-      margin: 0.5em 0;
-    }
+        h1 {
+            text-align: center;
+            font-weight: 100;
+            font-size: 60px;
+            color: #e74c3c;
+        }
 
-    #keytext {
-      width: 100%;
-      height: 150px;
-      border: 1px solid #555;
-      background : #fff;
-      max-width: 100%;
-      display: block;
-    }
+        .pc-tab {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-    ul {
-      width: 100%;
-      list-style-type: none;
-      padding-left: 0;
-    }
+        .pc-tab ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
 
-    li {
-      width: 99%;
-    }
+        .pc-tab ul li label {
+            float: left;
+            padding: 15px 25px;
+            border: 1px solid #ddd;
+            border-bottom: 0;
+            background: #eeeeee;
+            color: #444;
+        }
 
-    li label {
-      width: 57%;
-      display: inline-block;
-    }
+        .pc-tab ul li label:hover {
+            background: #dddddd;
+        }
 
-    button {
-      border-radius: 3px;
-      -moz-border-radius: 3px;
-      background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
-      background: -moz-linear-gradient(top, #fff, #ddd);
-      border: 1px solid #bbb;
-    }
+        .pc-tab ul li label:active {
+            background: #ffffff;
+        }
 
-    #info p {line-height: 1.1em; margin-bottom: 0.3em;}
+        .pc-tab ul li:not(:last-child) label {
+            border-right-width: 0;
+        }
+
+        .pc-tab section {
+            clear: both;
+        }
+
+        .pc-tab section div {
+            padding: 20px;
+            width: 100%;
+            border: 1px solid #ddd;
+            background: #fff;
+            line-height: 1.5em;
+            letter-spacing: 0.3px;
+            color: #444;
+        }
+
+        .pc-tab section div h2 {
+            margin: 0;
+            letter-spacing: 1px;
+            color: #34495e;
+        }
+
+        #tab1:checked~nav .tab1 label,
+        #tab2:checked~nav .tab2 label,
+        #tab3:checked~nav .tab3 label {
+            background: white;
+            color: #111;
+            position: relative;
+        }
+
+        #tab1:checked~nav .tab1 label:after,
+        #tab2:checked~nav .tab2 label:after,
+        #tab3:checked~nav .tab3 label:after {
+            content: '';
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #ffffff;
+            left: 0;
+            bottom: -1px;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #CCC;
+            text-align: center;
+        }
+
+        footer a {
+            color: #AAA;
+            text-decoration: none;
+        }
     </style>
-  </head>
-  <body>
-    <div id="container">
-      <header id="title">
-        <hgroup>
-          <h1>SKS OpenPGP Key server</h1>
-        </hgroup>
-      </header>
-      <div id="main" role="main">
-        <header>
-          <h2>Extract a key</h2>
-        </header>
-        <p>
-          You can find a key by typing in some words that appear in the
-          userid (name, email, etc.) of the key you're looking for, or
-          by typing in the keyid in hex format ("0x&#8230;")
-        </p>
-        <form id="lookup" action="/pks/lookup" method="get">
-          <fieldset checked="true">
-            <legend>Search for a public key</legend>
+</head>
+
+<body>
+    <h1>PGP Key Server</h1>
+
+    <div class="pc-tab">
+        <input checked="checked" id="tab1" type="radio" name="pct" />
+        <input id="tab2" type="radio" name="pct" />
+        <input id="tab3" type="radio" name="pct" />
+        <nav>
             <ul>
-              <li>
-                <label for="search">String</label>
-                <input id="search" name="search" placeholder="0xDEADBEEF" required="" autofocus="" type="text">
-              </li>
-              <li>
-                <label for="fingerprint">Show PGP Fingerprints</label>
-                <input id="fingerprint" name="fingerprint" type="checkbox">
-              </li>
-              <li>
-                <label for="hash">Show SKS full-key hashes</label>
-                <input id="hash" name="hash" type="checkbox">
-              </li>
-              <li>
-                <label for="matching">Get regular index of matching keys</label>
-                <input id="matching" name="op" value="index" type="radio">
-              </li>
-              <li>
-                <label for="verbose">Get verbose index of matching keys</label>
-                <input id="verbose" name="op" value="vindex" checked="checked" type="radio">
-              </li>
-              <li>
-                <label for="asciiarmored">Retrieve ascii-armored keys</label>
-                <input id="asciiarmored" name="op" value="get" type="radio">
-              </li>
-              <li>
-                <label for="fullkey">Retrieve keys by full-key hash</label>
-                <input id="fullkey" name="op" value="hget" type="radio">
-              </li>
+                <li class="tab1">
+                    <label for="tab1">Search</label>
+                </li>
+                <li class="tab2">
+                    <label for="tab2">Submit</label>
+                </li>
+                <li class="tab3">
+                    <label for="tab3">FAQ</label>
+                </li>
             </ul>
-            <button type="reset">Reset</button>
-            <button type="submit">Search for a key</button>
-          </fieldset>
-        </form>
-        <header>
-          <h2>Submit a key</h2>
-        </header>
-        <p>
-          You can submit a key by simply pasting in the ASCII-armored
-          version of your key and clicking on submit.
-        </p>
-        <form id="add" action="/pks/add" method="post">
-          <fieldset>
-            <textarea id="keytext" name="keytext" rows="5" cols="30"></textarea>
-            <button type="reset">Reset</button>
-            <button checked="true" type="submit">Submit this key</button>
-          </fieldset>
-        </form>
-      </div>
-      <!-- end of #main -->
-      <footer id="info">
-        <p>
-          <a href="https://bitbucket.org/skskeyserver/sks-keyserver/">SKS</a> is
-          a new <a href="http://www.openpgp.org/">OpenPGP</a>
-          keyserver. The main innovation of SKS is that it includes a
-          highly-efficient reconciliation algorithm for keeping the
-          keyservers synchronized.
-        </p>
-        <p style="text-align: center;"><a href="/pks/lookup?op=stats">SKS statistics</a></p>
-      </footer>
+        </nav>
+        <section>
+            <div class="tab1">
+                <h2>Extract a key</h2>
+                <p>
+                    You can find a key by typing in some words that appear in the userid (name, email, etc.) of the key you're looking for, or
+                    by typing in the keyid in hex format ("0x&#8230;")
+                </p>
+                <p>
+                    <form id="lookup" action="/pks/lookup" method="get">
+                        <fieldset checked="true">
+                            <legend>Search for a public key</legend>
+                            <p>
+                                <input id="search" name="search" placeholder="0xDEADBEEF" required="" autofocus="" type="text">
+                            </p>
+                            <p>
+                                <input id="fingerprint" name="fingerprint" type="checkbox">
+                                <label for="fingerprint">Show PGP Fingerprints</label>
+                            </p>
+                            <p>
+                                <input id="hash" name="hash" type="checkbox">
+                                <label for="hash">Show SKS full-key hashes</label>
+                            </p>
+                            <p>
+                                <input id="matching" name="op" value="index" type="radio">
+                                <label for="matching">Get regular index of matching keys</label>
+                            </p>
+                            <p>
+                                <input id="verbose" name="op" value="vindex" checked="checked" type="radio">
+                                <label for="verbose">Get verbose index of matching keys</label>
+                            </p>
+                            <p>
+                                <input id="asciiarmored" name="op" value="get" type="radio">
+                                <label for="asciiarmored">Retrieve ascii-armored keys</label>
+                            </p>
+                            <p>
+                                <input id="fullkey" name="op" value="hget" type="radio">
+                                <label for="fullkey">Retrieve keys by full-key hash</label>
+                            </p>
+                            <button type="reset">Reset</button>
+                            <button type="submit">Search for a key</button>
+                        </fieldset>
+                    </form>
+                </p>
+            </div>
+            <div class="tab2">
+                <h2>Submit a key</h2>
+                <p>
+                    You can submit a key by simply pasting in the ASCII-armored version of your key and clicking on submit.
+                </p>
+                <p>
+                    <form id="add" action="/pks/add" method="post">
+                        <textarea id="keytext" name="keytext" rows="5" cols="30"></textarea>
+                        <p>
+                            <button type="reset">Reset</button>
+                            <button checked="true" type="submit">Submit this key</button>
+                        </p>
+                    </form>
+                </p>
+            </div>
+            <div class="tab3">
+                <h2>FAQ</h2>
+                <p>
+                    <ul>
+                        <li>
+                            <h3>Q1: The server info</h3>
+                            <p>
+                                This server is sponsored by
+                                <a href="https://ustcnet.ustc.edu.cn/" target="_blank">USTC Network Information Center</a>. The deployment scripts, source of the webpage can be
+                                found at
+                                <a href="https://github.com/zhsj/sks-ustc/" target="_blank">GitHub</a>.
+                            </p>
+                            <p>
+                                For any operational questions, please contact
+                                <a href="/pks/lookup?op=vindex&search=0xCF0E265B7DFBB2F2">0xCF0E265B7DFBB2F2</a>.
+                            </p>
+                        </li>
+                        <li>
+                            <h3>Q2: Configuration for GnuPG</h3>
+                            <p>
+                                For GnuPG 2, you can put following line in
+                                <code> ~/.gnupg/dirmngr.conf</code>:
+                                <pre><code>keyserver hkps://pgp.ustc.edu.cn</code></pre> Then run
+                                <code>gpgconf --reload dirmngr</code> to reload dirmngr.
+                            </p>
+                        </li>
+                        <li>
+                            <h3>Q3: Useful links</h3>
+
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>OpenPGP</td>
+                                        <td>
+                                            <a href="https://www.openpgp.org" target="_blank">https://www.openpgp.org</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SKS</td>
+                                        <td>
+                                            <a href="https://bitbucket.org/skskeyserver/sks-keyserver">https://bitbucket.org/skskeyserver/sks-keyserver</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Key Server Pool</td>
+                                        <td>
+                                            <a href="https://sks-keyservers.net">https://sks-keyservers.net</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Server Stats</td>
+                                        <td>
+                                            <a href="/pks/lookup?op=stats">/pks/lookup?op=stats</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </section>
     </div>
-    <!--! end of #container -->
-  </body>
+
+    <footer>
+        by
+        <a href="//lug.ustc.edu.cn" target="_blank">LUG@USTC</a>
+    </footer>
+
+</body>
+
 </html>
+
+<!--
+    CSS from https://codepen.io/renatorib/pen/rlpfj
+-->
