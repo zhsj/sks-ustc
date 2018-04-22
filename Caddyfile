@@ -1,5 +1,5 @@
 http://pgp.ustc.edu.cn:11371, http://pgp.ustc.edu.cn, https://pgp.ustc.edu.cn {
-  bind 
+  bind 202.38.95.91 2001:da8:d800:95::91
   root /var/lib/sks/web/
   proxy /pks/ http://127.0.0.1:11371/ {
     header_downstream Via "{proto} {hostonly}:11371 (Caddy)"
