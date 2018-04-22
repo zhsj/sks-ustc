@@ -8,7 +8,9 @@ if [[ "$EUID" -ne 0 ]]; then
 fi
 
 if ! docker info; then
-	wget https://download.docker.com/linux/debian/gpg -O /etc/apt/trusted.gpg.d/docker.gpg
+	wget https://download.docker.com/linux/debian/gpg -O /etc/apt/trusted.gpg.d/docker
+	gpg --dearmor /etc/apt/trusted.gpg.d/docker
+	rm -f /etc/apt/trusted.gpg.d/docker
 	echo deb https://download.docker.com/linux/debian stretch stable > /etc/apt/sources.list.d/docker.list
 	apt update
 	apt install -y docker-ce
