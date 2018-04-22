@@ -26,7 +26,7 @@ if [[ ! -e /var/lib/sks ]]; then
 		wget -crp -e robots=off -l1 --no-parent --cut-dirs=3 -nH -A pgp,txt https://keyserver.mattrude.com/dump/current
 		md5sum -c metadata-sks-dump.txt
 	)
-	docker run --rm -v /srv/docker/sks/:/var/lib/sks/ zhusj/sks:full sks-init
+	docker run --rm -v /var/lib/sks/:/var/lib/sks/ zhusj/sks:full sks-init
 	rm -rf /var/lib/sks/dump
 	cur=$(dirname "$(readlink -f "$0")")
 	rm -f /var/lib/sks/membership
@@ -42,7 +42,7 @@ fi
 docker rm -v -f sks-keyserver || true
 
 docker run -it -d --restart=always --name sks-keyserver \
-  -v /srv/docker/sks/:/var/lib/sks/ \
+  -v /var/lib/sks/:/var/lib/sks/ \
   --network=host zhusj/sks:full
 
 docker image prune -f -a
