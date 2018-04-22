@@ -13,6 +13,7 @@ http://keys.gnupg.net:11371 {
 }
 
 http://sks.ustclug.org,
+https://sks.ustclug.org,
 http://sks.ustclug.org:11371 {
   bind 202.38.95.91 2001:da8:d800:95::91
   root /var/lib/sks/web/
@@ -20,4 +21,5 @@ http://sks.ustclug.org:11371 {
   errors {
     404 ustclug-org-404.html
   }
+  tls self_signed
 }
