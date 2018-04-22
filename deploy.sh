@@ -37,6 +37,8 @@ if [[ ! -e /var/lib/sks ]]; then
 	ln -s "$cur/Caddyfile" /var/lib/sks/caddy/Caddyfile
 	rm -f /var/lib/sks/web/index.html
 	ln -s "$cur/index.html" /var/lib/sks/web/index.html
+	rm -f /var/lib/sks/web/ustclug-org-404.html
+	ln -sf "$cur/ustclug-org-404.html" /var/lib/sks/web/ustclug-org-404.html
 fi
 
 docker rm -v -f sks-keyserver || true
