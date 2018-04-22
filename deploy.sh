@@ -27,17 +27,18 @@ if [[ ! -e /var/lib/sks ]]; then
 		md5sum -c metadata-sks-dump.txt
 	)
 	docker run --rm -v /var/lib/sks/:/var/lib/sks/ zhusj/sks:full sks-init
-	rm -rf /var/lib/sks/dump
-	cur=$(dirname "$(readlink -f "$0")")
-	rm -f /var/lib/sks/membership
-	ln "$cur/membership" /var/lib/sks/membership
-	rm -f /var/lib/sks/sksconf
-	ln "$cur/sksconf" /var/lib/sks/sksconf
-	rm -f /var/lib/sks/caddy/Caddyfile
-	ln "$cur/Caddyfile" /var/lib/sks/caddy/Caddyfile
-	rm -rf /var/lib/sks/web
-	ln "$cur/web" /var/lib/sks/web
 fi
+
+rm -rf /var/lib/sks/dump
+cur=$(dirname "$(readlink -f "$0")")
+rm -f /var/lib/sks/membership
+cp "$cur/membership" /var/lib/sks/membership
+rm -f /var/lib/sks/sksconf
+cp "$cur/sksconf" /var/lib/sks/sksconf
+rm -f /var/lib/sks/caddy/Caddyfile
+cp "$cur/Caddyfile" /var/lib/sks/caddy/Caddyfile
+rm -rf /var/lib/sks/web
+cp -r "$cur/web" /var/lib/sks/web
 
 docker rm -v -f sks-keyserver || true
 
