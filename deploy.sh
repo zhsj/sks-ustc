@@ -23,7 +23,7 @@ if [[ ! -e /var/lib/sks ]]; then
 	mkdir -p /var/lib/sks/dump
 	(
 		cd /var/lib/sks/dump
-		wget -crp -e robots=off -l1 --no-parent --cut-dirs=3 -nH -A pgp,txt https://keyserver.mattrude.com/dump/current
+		wget -crp -e robots=off -l1 --no-parent --cut-dirs=3 -nH -A pgp,txt http://sks.ustclug.org:10080/
 		md5sum -c metadata-sks-dump.txt
 	)
 	docker run --rm -v /var/lib/sks/:/var/lib/sks/ zhusj/sks:full sks-init
