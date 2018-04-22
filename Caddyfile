@@ -3,8 +3,7 @@ https://pgp.ustc.edu.cn,
 http://pgp.ustc.edu.cn:11371,
 http://*.sks-keyservers.net:11371,
 http://*.pool.sks-keyservers.net:11371,
-http://keys.gnupg.net:11371,
-http://sks.ustclug.org:11371 {
+http://keys.gnupg.net:11371 {
   bind 202.38.95.91 2001:da8:d800:95::91
   root /var/lib/sks/web/
   proxy /pks/ http://127.0.0.1:11371/ {
@@ -13,7 +12,8 @@ http://sks.ustclug.org:11371 {
   tls zsj950618@gmail.com
 }
 
-http://sks.ustclug.org {
+http://sks.ustclug.org,
+http://sks.ustclug.org:11371 {
   bind 202.38.95.91 2001:da8:d800:95::91
   root /var/lib/sks/web/
   status 404 /
