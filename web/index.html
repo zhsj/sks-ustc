@@ -14,29 +14,32 @@
             display: block;
         }
 
-        #zh~section .zh,
+        #en~nav .en,
         #en~section .en {
             display: none;
         }
 
-        #zh:checked~section .zh,
+        #en~nav .zh,
+        #en~section .zh {
+            display: block;
+        }
+
+        #en~section label .zh {
+            display: inline;
+        }
+
+        #en:checked~nav .en,
         #en:checked~section .en {
             display: block;
         }
 
-        #zh:checked~section label .zh,
+        #en:checked~nav .zh,
+        #en:checked~section .zh {
+            display: none;
+        }
+
         #en:checked~section label .en {
             display: inline;
-        }
-
-        #zh~nav .zh label,
-        #en~nav .en label {
-            display: block;
-        }
-
-        #zh:checked~nav .zh label,
-        #en:checked~nav .en label {
-            display: none;
         }
 
         /* Visual Styles */
@@ -148,6 +151,14 @@
             text-decoration: none;
         }
     </style>
+    <script>
+        window.onload = function () {
+            var language = navigator.language || navigator.browserLanguage;
+            if (language.indexOf('zh') != -1) {
+                document.getElementById('en').checked = 0;
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -157,8 +168,7 @@
         <input checked="checked" id="tab1" type="radio" name="tab" />
         <input id="tab2" type="radio" name="tab" />
         <input id="tab3" type="radio" name="tab" />
-        <input checked="checked" id="en" type="radio" name="lang" />
-        <input id="zh" type="radio" name="lang" />
+        <input checked="checked" id="en" type="checkbox" name="lang" />
         <nav>
             <ul>
                 <li class="tab1">
@@ -170,11 +180,11 @@
                 <li class="tab3">
                     <label for="tab3">FAQ</label>
                 </li>
-                <li class="en">
-                    <label for="en">English</label>
-                </li>
-                <li class="zh">
-                    <label for="zh">中文</label>
+                <li>
+                    <label for="en">
+                        <span class="en">中文</span>
+                        <span class="zh">English</span>
+                    </label>
                 </li>
             </ul>
         </nav>
