@@ -1,7 +1,7 @@
 debuglevel: 3
 hostname: pgp.ustc.edu.cn
 server_contact: 0xCF0E265B7DFBB2F2
-recon_address: 0.0.0.0
+recon_address: 202.38.95.91 2001:da8:d800:95::91
 recon_port: 11370
 hkp_address: 127.0.0.1
 hkp_port: 11371
