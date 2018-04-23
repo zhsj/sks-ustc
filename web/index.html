@@ -3,8 +3,8 @@
 <head>
     <title>PGP Key Server</title>
     <style>
-        .pc-tab>input,
-        .pc-tab section>div {
+        .content>input,
+        .content section>div {
             display: none;
         }
 
@@ -14,10 +14,29 @@
             display: block;
         }
 
-        #tab1:checked~nav .tab1,
-        #tab2:checked~nav .tab2,
-        #tab3:checked~nav .tab3 {
-            color: red;
+        #zh~section .zh,
+        #en~section .en {
+            display: none;
+        }
+
+        #zh:checked~section .zh,
+        #en:checked~section .en {
+            display: block;
+        }
+
+        #zh:checked~section label .zh,
+        #en:checked~section label .en {
+            display: inline;
+        }
+
+        #zh~nav .zh label,
+        #en~nav .en label {
+            display: block;
+        }
+
+        #zh:checked~nav .zh label,
+        #en:checked~nav .en label {
+            display: none;
         }
 
         /* Visual Styles */
@@ -31,6 +50,7 @@
         }
 
         body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             -webkit-font-smoothing: antialiased;
             background: #ecf0f1;
         }
@@ -42,19 +62,19 @@
             color: #e74c3c;
         }
 
-        .pc-tab {
+        .content {
             width: 100%;
             max-width: 700px;
             margin: 0 auto;
         }
 
-        .pc-tab ul {
+        .content ul {
             list-style: none;
             margin: 0;
             padding: 0;
         }
 
-        .pc-tab ul li label {
+        .content ul li label {
             float: left;
             padding: 15px 25px;
             border: 1px solid #ddd;
@@ -63,23 +83,23 @@
             color: #444;
         }
 
-        .pc-tab ul li label:hover {
+        .content ul li label:hover {
             background: #dddddd;
         }
 
-        .pc-tab ul li label:active {
+        .content ul li label:active {
             background: #ffffff;
         }
 
-        .pc-tab ul li:not(:last-child) label {
+        .content ul li:not(:last-child) label {
             border-right-width: 0;
         }
 
-        .pc-tab section {
+        .content section {
             clear: both;
         }
 
-        .pc-tab section div {
+        .content section div {
             padding: 20px;
             width: 100%;
             border: 1px solid #ddd;
@@ -89,7 +109,7 @@
             color: #444;
         }
 
-        .pc-tab section div h2 {
+        .content section div h2 {
             margin: 0;
             letter-spacing: 1px;
             color: #34495e;
@@ -133,10 +153,12 @@
 <body>
     <h1>PGP Key Server</h1>
 
-    <div class="pc-tab">
-        <input checked="checked" id="tab1" type="radio" name="pct" />
-        <input id="tab2" type="radio" name="pct" />
-        <input id="tab3" type="radio" name="pct" />
+    <div class="content">
+        <input checked="checked" id="tab1" type="radio" name="tab" />
+        <input id="tab2" type="radio" name="tab" />
+        <input id="tab3" type="radio" name="tab" />
+        <input checked="checked" id="en" type="radio" name="lang" />
+        <input id="zh" type="radio" name="lang" />
         <nav>
             <ul>
                 <li class="tab1">
@@ -148,63 +170,114 @@
                 <li class="tab3">
                     <label for="tab3">FAQ</label>
                 </li>
+                <li class="en">
+                    <label for="en">English</label>
+                </li>
+                <li class="zh">
+                    <label for="zh">中文</label>
+                </li>
             </ul>
         </nav>
         <section>
             <div class="tab1">
-                <h2>Extract a key</h2>
-                <p>
+                <h2>
+                    <span class="en">Extract a key</span>
+                    <span class="zh">获取公钥</span>
+                </h2>
+                <p class="en">
                     You can find a key by typing in some words that appear in the userid (name, email, etc.) of the key you're looking for, or
                     by typing in the keyid in hex format ("0x&#8230;")
+                </p>
+                <p class="zh">
+                    你可以搜索一个公钥中的 userid（name, email 等），或者直接输入 keyid 的十六进制格式（如 "0x&#8230;"）。
                 </p>
                 <p>
                     <form id="lookup" action="/pks/lookup" method="get">
                         <fieldset checked="true">
-                            <legend>Search for a public key</legend>
+                            <legend>
+                                <span class="en">Search for a public key</span>
+                                <span class="zh">搜索公钥</span>
+                            </legend>
                             <p>
                                 <input id="search" name="search" placeholder="0xDEADBEEF" required="" autofocus="" type="text">
                             </p>
                             <p>
                                 <input id="fingerprint" name="fingerprint" type="checkbox">
-                                <label for="fingerprint">Show PGP Fingerprints</label>
+                                <label for="fingerprint">
+                                    <span class="en">Show PGP Fingerprints</span>
+                                    <span class="zh">显示 PGP 指纹</span>
+                                </label>
                             </p>
                             <p>
                                 <input id="hash" name="hash" type="checkbox">
-                                <label for="hash">Show SKS full-key hashes</label>
+                                <label for="hash">
+                                    <span class="en">Show SKS full-key hashes</span>
+                                    <span class="zh">显示 SKS full-key 哈希</span>
+                                </label>
                             </p>
                             <p>
                                 <input id="matching" name="op" value="index" type="radio">
-                                <label for="matching">Get regular index of matching keys</label>
+                                <label for="matching">
+                                    <span class="en">Get regular index of matching keys</span>
+                                    <span class="zh">获取匹配公钥的 regular index</span>
+                                </label>
                             </p>
                             <p>
                                 <input id="verbose" name="op" value="vindex" checked="checked" type="radio">
-                                <label for="verbose">Get verbose index of matching keys</label>
+                                <label for="verbose">
+                                    <span class="en">Get verbose index of matching keys</span>
+                                    <span class="zh">获取匹配公钥的 verbose index</span>
+                                </label>
                             </p>
                             <p>
                                 <input id="asciiarmored" name="op" value="get" type="radio">
-                                <label for="asciiarmored">Retrieve ascii-armored keys</label>
+                                <label for="asciiarmored">
+                                    <span class="en">Retrieve ascii-armored keys</span>
+                                    <span class="zh">获取 ascii-armored 格式的公钥</span>
+                                </label>
                             </p>
                             <p>
                                 <input id="fullkey" name="op" value="hget" type="radio">
-                                <label for="fullkey">Retrieve keys by full-key hash</label>
+                                <label for="fullkey">
+                                    <span class="en">Retrieve keys by full-key hash</span>
+                                    <span class="zh">通过 full-key 哈希获取公钥</span>
+                                </label>
                             </p>
-                            <button type="reset">Reset</button>
-                            <button type="submit">Search for a key</button>
+                            <button type="reset">
+                                <span class="en">Reset</span>
+                                <span class="zh">重置</span>
+                            </button>
+                            <button type="submit">
+                                <span class="en">Search for a key</span>
+                                <span class="zh">搜索公钥</span>
+                            </button>
                         </fieldset>
                     </form>
                 </p>
             </div>
             <div class="tab2">
-                <h2>Submit a key</h2>
-                <p>
+                <h2>
+                    <span class="en">Submit a key</span>
+                    <span class="zh">提交公钥</span>
+                </h2>
+                <p class="en">
                     You can submit a key by simply pasting in the ASCII-armored version of your key and clicking on submit.
+                </p>
+                <p class="zh">
+                    你可以把公钥 ASCII-armored 格式的内容粘贴在这里，然后点击提交上传。
                 </p>
                 <p>
                     <form id="add" action="/pks/add" method="post">
                         <textarea id="keytext" name="keytext" rows="5" cols="30"></textarea>
                         <p>
-                            <button type="reset">Reset</button>
-                            <button checked="true" type="submit">Submit this key</button>
+                            <button type="reset">
+                                <span class="en">Reset</span>
+                                <span class="zh">重置</span>
+                            </button>
+                            <button checked="true" type="submit">
+                                <span class="en">Submit this key</span>
+                                <span class="zh">提交公钥</span>
+                            </button>
                         </p>
                     </form>
                 </p>
@@ -214,30 +287,58 @@
                 <p>
                     <ul>
                         <li>
-                            <h3>Q1: The server info</h3>
-                            <p>
+                            <h3>
+                                <span class="en">Q1: The server info</span>
+                                <span class="zh">Q1: 服务器信息</span>
+                            </h3>
+                            <p class="en">
                                 This server is sponsored by
                                 <a href="https://ustcnet.ustc.edu.cn/" target="_blank">USTC Network Information Center</a>. The deployment scripts, source of the webpage can be
                                 found at
                                 <a href="https://github.com/zhsj/sks-ustc/" target="_blank">GitHub</a>.
                             </p>
-                            <p>
-                                For any operational questions, please contact
+                            <p class="zh">
+                                本服务是由
+                                <a href="https://ustcnet.ustc.edu.cn/" target="_blank">中国科学技术大学网络信息中心</a>提供赞助。 服务器的部署脚本、本网页的源码可在
+                                <a href="https://github.com/zhsj/sks-ustc/" target="_blank">GitHub</a> 找到。
+                            </p>
+                            <p class="en">
+                                For operational questions, please contact
                                 <a href="/pks/lookup?op=vindex&search=0xCF0E265B7DFBB2F2">0xCF0E265B7DFBB2F2</a>.
                             </p>
-                        </li>
-                        <li>
-                            <h3>Q2: Configuration for GnuPG</h3>
-                            <p>
-                                For GnuPG 2, you can put following line in
-                                <code> ~/.gnupg/dirmngr.conf</code>:
-                                <pre><code>keyserver hkps://pgp.ustc.edu.cn</code></pre> Then run
-                                <code>gpgconf --reload dirmngr</code> to reload dirmngr.
+                            <p class="zh">
+                                如果有任何运营方面的问题，可以联系
+                                <a href="/pks/lookup?op=vindex&search=0xCF0E265B7DFBB2F2">0xCF0E265B7DFBB2F2</a>。
                             </p>
                         </li>
                         <li>
-                            <h3>Q3: Useful links</h3>
-
+                            <h3>
+                                <span class="en">Q2: Configuration for GnuPG</span>
+                                <span class="zh">Q2: GnuPG 配置</span>
+                            </h3>
+                            <p class="en">
+                                For GnuPG 2, you can put following line in
+                                <code> ~/.gnupg/dirmngr.conf</code>:
+                            </p>
+                            <p class="zh">
+                                GnuPG 2 的用户，可以在
+                                <code> ~/.gnupg/dirmngr.conf</code> 文件中加入下面一行：
+                            </p>
+                            <pre><code>keyserver hkps://pgp.ustc.edu.cn</code></pre>
+                            <p class="en">
+                                Then run
+                                <code>gpgconf --reload dirmngr</code> to reload dirmngr.
+                            </p>
+                            <p class="zh">
+                                然后运行
+                                <code>gpgconf --reload dirmngr</code> 使配置生效。
+                            </p>
+                        </li>
+                        <li>
+                            <h3>
+                                <span class="en">Q3: Useful links</span>
+                                <span class="zh">Q3: 参考链接</span>
+                            </h3>
                             <table>
                                 <tbody>
                                     <tr>
