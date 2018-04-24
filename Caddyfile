@@ -13,6 +13,7 @@ http://keys.gnupg.net:11371 {
     header_downstream Via "{proto} {hostonly}:11371 (Caddy)"
   }
   tls zsj950618@gmail.com
+  log stdout
 }
 
 http://sks.ustclug.org,
@@ -25,4 +26,5 @@ http://sks.ustclug.org:11371 {
     404 others-404.html
   }
   tls self_signed
+  log stdout
 }
