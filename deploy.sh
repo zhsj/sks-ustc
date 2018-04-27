@@ -27,9 +27,9 @@ if [[ ! -e /var/lib/sks ]]; then
 		md5sum -c metadata-sks-dump.txt
 	)
 	docker run --rm -v /var/lib/sks/:/var/lib/sks/ zhusj/sks:full sks-init
+	rm -rf /var/lib/sks/dump
 fi
 
-rm -rf /var/lib/sks/dump
 cur=$(dirname "$(readlink -f "$0")")
 rm -f /var/lib/sks/membership
 cp "$cur/membership" /var/lib/sks/membership
