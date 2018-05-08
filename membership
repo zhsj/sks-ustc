@@ -12,6 +12,8 @@ keys.schluesselbruecke.de 11370 # Matthias Schreiber <schreiber-matti@web.de>  0
 sks.openpgp-keyserver.de 11370 # Matthias Schreiber <schreiber-matti@web.de>  0x586A2E13F52616561BFC32C95B964AE610D49726
 sks-peer.spodhuis.org 11370 # Phil Pennock <keyserver@spodhuis.org> 0x4D1E900E14C1CC04
 pgp.lehigh.edu 11370 # Keith Erekson <keith@lehigh.edu> 0xC9A3C33D
+keyserver.oeg.com.au 11370 # Mike O'Connor <mike@pineview.net> 0xE61814F5
+kr-sks.salac.me 11370 # Adam Salač <adam@salac.me> 0x50B3F73F0152757F
 
 keys.nerds.lu 11370 # Patrick Kahr <patrick@kahpa.lu> 0x3f917f479c5d0f3b
 key1.dock23.de 11370 # Ramón Goeden <ramon@internetsenat.de> 0xb7c51fd6
@@ -19,6 +21,5 @@ key2.dock23.de 11370 # Ramón Goeden <ramon@internetsenat.de> 0xb7c51fd6
 pgp.key-server.io 11370 # Carles Tubio <carles.tubio@key-server.io> 0xFA101D1FC3B39DE0
 sks.powdarrmonkey.net 11370 # Jonathan Wiltshire <jmw@debian.org> 0x5394479DD3524C51
 keys.connectical.com 11370 # Andres J. Diaz <ajdiaz@connectical.com>
-keyserver.oeg.com.au 11370 # Mike O'Connor <mike@pineview.net> 0xE61814F5
 
 pgpkeyserver.nl 11370 # Hillebrand van de Groep <hillebrand@flippylosaurus.eu> 0xA4B8697C
