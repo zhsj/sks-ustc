@@ -9,3 +9,4 @@ initial_stat:
 disable_mailsync:
 pagesize:          16
 ptree_pagesize:    16
+http_fetch_size:   20
