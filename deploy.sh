@@ -20,14 +20,9 @@ fi
 docker pull zhusj/sks:full
 
 if [[ ! -e /var/lib/sks ]]; then
-	mkdir -p /var/lib/sks/dump
-	(
-		cd /var/lib/sks/dump
-		wget -crp -e robots=off -l1 --no-parent --cut-dirs=3 -nH -A pgp,txt http://sks.ustclug.org:10080/
-		md5sum -c metadata-sks-dump.txt
-	)
-	docker run --rm -v /var/lib/sks/:/var/lib/sks/ zhusj/sks:full sks-init
-	rm -rf /var/lib/sks/dump
+	s3fs keydump /mnt -o url=http://s3.zhsj.me/ -o use_path_request_style -o public_bucket=1
+	docker run --rm -v /var/lib/sks/:/var/lib/sks/ -v /mnt/2018-06-16/:/var/lib/sks/dump/ zhusj/sks:full sks-init
+	fusermount -u /mnt/
 fi
 
 cur=$(dirname "$(readlink -f "$0")")
