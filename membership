@@ -2,7 +2,6 @@
 keys.fspproductions.biz 11370 # Fabian A. Santiago <fsantiago@garbage-juice.com> 0x643082042DC83E6D94B86C405E3DAA18A1C22D8F
 pgp.archreactor.org 11370 # Travis Megee <twmegee@seek42.net> 0xdd6017f142b7c552
 keys.flanga.io 11370 # Moritz Wirth <mw@flanga.io> 0x4733BFB2C7AC4938
-keys2.flanga.io 11370 # Flanga SKS Peering Administrator <sks-peering@flanga.io> 0xd015c49b2eceb8f1
 keys.fedoraproject.org 11370 # Nick Bebout <nb@fedoraproject.org> 0x167B4A54236BBEAA37DCCD92ED14D5E7110810E9
 keyserver.ntzwrk.org 11370 # ntzwrk <contact@ntzwrk.org> / https://onename.com/ntzwrk 0x4124909FDAB6DE615DD5BFD65EE2F34DE4DB893E
 sks.bonus-communis.eu 11370 # Pascal Levasseur <pascal.levasseur@topette.eu> 0xD01EE2BECE6873C6E79BC6CF68114745EC98DE38
@@ -10,7 +9,6 @@ keyserver.escomposlinux.org 11370 # PGP Key Server Administrator <pgp-public-key
 pgp.gwolf.org 11370 # Gunnar Wolf <gwolf@debian.org> 0x673A03E4C1DB921F
 keys.schluesselbruecke.de 11370 # Matthias Schreiber <schreiber-matti@web.de>  0x586A2E13F52616561BFC32C95B964AE610D49726
 sks.openpgp-keyserver.de 11370 # Matthias Schreiber <schreiber-matti@web.de>  0x586A2E13F52616561BFC32C95B964AE610D49726
-sks-peer.spodhuis.org 11370 # Phil Pennock <keyserver@spodhuis.org> 0x4D1E900E14C1CC04
 pgp.lehigh.edu 11370 # Keith Erekson <keith@lehigh.edu> 0xC9A3C33D
 keyserver.oeg.com.au 11370 # Mike O'Connor <mike@pineview.net> 0xE61814F5
 kr-sks.salac.me 11370 # Adam Salač <adam@salac.me> 0x50B3F73F0152757F
