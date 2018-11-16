@@ -1,7 +1,5 @@
 # pgp.ustc.edu.cn 11370 # Shengjing Zhu <zsj950618@gmail.com> 0xCF0E265B7DFBB2F2
-keys.fspproductions.biz 11370 # Fabian A. Santiago <fsantiago@garbage-juice.com> 0x643082042DC83E6D94B86C405E3DAA18A1C22D8F
 pgp.archreactor.org 11370 # Travis Megee <twmegee@seek42.net> 0xdd6017f142b7c552
-keys.flanga.io 11370 # Moritz Wirth <mw@flanga.io> 0x4733BFB2C7AC4938
 keys.fedoraproject.org 11370 # Nick Bebout <nb@fedoraproject.org> 0x167B4A54236BBEAA37DCCD92ED14D5E7110810E9
 keyserver.ntzwrk.org 11370 # ntzwrk <contact@ntzwrk.org> / https://onename.com/ntzwrk 0x4124909FDAB6DE615DD5BFD65EE2F34DE4DB893E
 sks.bonus-communis.eu 11370 # Pascal Levasseur <pascal.levasseur@topette.eu> 0xD01EE2BECE6873C6E79BC6CF68114745EC98DE38
@@ -15,8 +13,6 @@ kr-sks.salac.me 11370 # Adam Salač <adam@salac.me> 0x50B3F73F0152757F
 sks.powdarrmonkey.net 11370 # Jonathan Wiltshire <jmw@debian.org> 0x5394479DD3524C51
 pgp.surfnet.nl 11370 # Melvin Koelewijn <pgp@surfnet.nl> 0x2DE51BC259A925CD
 
-key1.dock23.de 11370 # Ramón Goeden <ramon@internetsenat.de> 0xb7c51fd6
-key2.dock23.de 11370 # Ramón Goeden <ramon@internetsenat.de> 0xb7c51fd6
 pgp.key-server.io 11370 # Carles Tubio <carles.tubio@key-server.io> 0xFA101D1FC3B39DE0
 keys.connectical.com 11370 # Andres J. Diaz <ajdiaz@connectical.com>
 
