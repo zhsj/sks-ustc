@@ -38,7 +38,7 @@ cp -r "$cur/web" /var/lib/sks/web
 docker rm -v -f sks-keyserver || true
 
 docker run -it -d --restart=always --name sks-keyserver \
-  --log-opt max-size=10m --log-opt max-file=2 \
+  --log-opt max-size=10m --log-opt max-file=2 --memory=1800m \
   -v /var/lib/sks/:/var/lib/sks/ \
   --network=host zhusj/sks:full
 
