@@ -9,6 +9,7 @@ https://pgp.ustc.edu.cn {
   proxy /pks/ http://127.0.0.1:11371/ {
     header_downstream Via "{proto} {hostonly}:11371 (Caddy)"
   }
+  limits 10mb
   tls zsj950618@gmail.com
   log / stdout "[Caddy:{host}] {combined}"
 }
