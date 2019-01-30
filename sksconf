@@ -1,4 +1,4 @@
-debuglevel: 5
+debuglevel: 3
 hostname: pgp.ustc.edu.cn
 server_contact: 0xCF0E265B7DFBB2F2
 recon_address: 202.38.95.91 2001:da8:d800:95::91
@@ -9,4 +9,4 @@ initial_stat:
 disable_mailsync:
 pagesize:          16
 ptree_pagesize:    16
-http_fetch_size:   50
+http_fetch_size:   10
