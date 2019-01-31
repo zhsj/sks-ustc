@@ -1,19 +1,21 @@
 # pgp.ustc.edu.cn 11370 # Shengjing Zhu <zsj950618@gmail.com> 0xCF0E265B7DFBB2F2
-pgp.archreactor.org 11370 # Travis Megee <twmegee@seek42.net> 0xdd6017f142b7c552
 keys.fedoraproject.org 11370 # Nick Bebout <nb@fedoraproject.org> 0x167B4A54236BBEAA37DCCD92ED14D5E7110810E9
-keyserver.ntzwrk.org 11370 # ntzwrk <contact@ntzwrk.org> / https://onename.com/ntzwrk 0x4124909FDAB6DE615DD5BFD65EE2F34DE4DB893E
-sks.bonus-communis.eu 11370 # Pascal Levasseur <pascal.levasseur@topette.eu> 0xD01EE2BECE6873C6E79BC6CF68114745EC98DE38
 keyserver.escomposlinux.org 11370 # PGP Key Server Administrator <pgp-public-keys@escomposlinux.org> 0x9494EB8D619AFE032AD1C2DCBE84550A2578867D
 pgp.gwolf.org 11370 # Gunnar Wolf <gwolf@debian.org> 0x673A03E4C1DB921F
-keys.schluesselbruecke.de 11370 # Matthias Schreiber <schreiber-matti@web.de>  0x586A2E13F52616561BFC32C95B964AE610D49726
-sks.openpgp-keyserver.de 11370 # Matthias Schreiber <schreiber-matti@web.de>  0x586A2E13F52616561BFC32C95B964AE610D49726
 pgp.lehigh.edu 11370 # Keith Erekson <keith@lehigh.edu> 0xC9A3C33D
 keyserver.oeg.com.au 11370 # Mike O'Connor <mike@pineview.net> 0xE61814F5
-kr-sks.salac.me 11370 # Adam Salač <adam@salac.me> 0x50B3F73F0152757F
-sks.powdarrmonkey.net 11370 # Jonathan Wiltshire <jmw@debian.org> 0x5394479DD3524C51
 pgp.surfnet.nl 11370 # Melvin Koelewijn <pgp@surfnet.nl> 0x2DE51BC259A925CD
 
 pgp.key-server.io 11370 # Carles Tubio <carles.tubio@key-server.io> 0xFA101D1FC3B39DE0
-keys.connectical.com 11370 # Andres J. Diaz <ajdiaz@connectical.com>
 
-pgpkeyserver.nl 11370 # Hillebrand van de Groep <hillebrand@flippylosaurus.eu> 0xA4B8697C
+
+# Temporary disabled, server down
+# pgp.archreactor.org 11370 # Travis Megee <twmegee@seek42.net> 0xdd6017f142b7c552
+# keyserver.ntzwrk.org 11370 # ntzwrk <contact@ntzwrk.org> / https://onename.com/ntzwrk 0x4124909FDAB6DE615DD5BFD65EE2F34DE4DB893E
+# sks.bonus-communis.eu 11370 # Pascal Levasseur <pascal.levasseur@topette.eu> 0xD01EE2BECE6873C6E79BC6CF68114745EC98DE38
+# keys.schluesselbruecke.de 11370 # Matthias Schreiber <schreiber-matti@web.de>  0x586A2E13F52616561BFC32C95B964AE610D49726
+# sks.openpgp-keyserver.de 11370 # Matthias Schreiber <schreiber-matti@web.de>  0x586A2E13F52616561BFC32C95B964AE610D49726
+# kr-sks.salac.me 11370 # Adam Salač <adam@salac.me> 0x50B3F73F0152757F
+# sks.powdarrmonkey.net 11370 # Jonathan Wiltshire <jmw@debian.org> 0x5394479DD3524C51
+# keys.connectical.com 11370 # Andres J. Diaz <ajdiaz@connectical.com>
+# pgpkeyserver.nl 11370 # Hillebrand van de Groep <hillebrand@flippylosaurus.eu> 0xA4B8697C
