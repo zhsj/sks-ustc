@@ -6,6 +6,10 @@ https://pgp.ustc.edu.cn {
   gzip {
     ext .html .ico
   }
+  cache {
+    match_path /pks/
+    default_max_age 30m
+  }
   proxy /pks/ http://127.0.0.1:11371/ {
     header_downstream Via "{proto} {hostonly}:11371 (Caddy)"
   }
